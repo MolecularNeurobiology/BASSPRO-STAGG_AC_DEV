@@ -2,11 +2,9 @@
 import sys
 import os
 
-
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import QFile
 from PySide2.QtUiTools import QUiLoader
-
 
 class Plethysmography(QMainWindow):
     def __init__(self):

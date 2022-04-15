@@ -1,0 +1,18 @@
+Notes:
+    Loading multiple wrong files when selecting the meta-data crashed the program
+
+
+Improvements:
+    Program remembers last directory you opened a file and uses that location for file dialogue
+        Or remembers per file selection button
+
+    Size of BASSPro basic settings exceeds screen
+        This happened when there was no selection of BASSPro settings prior
+        This happened on a multiple monitor setup
+
+    When leaving max display for the main window, the window changed size and exceeded main monitor screen
+        After this happened the main window entered a strange minimized state that I was unable to recover from
+
+Questions:
+    Does any data/configuration persist in the program for example the default directory
+        or must a user select this anytime the program is run
