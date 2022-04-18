@@ -62,6 +62,16 @@
                 "10% CO2":["10% CO2"],
                 "Room Air 2":["Room Air 2"]
             },
+            "5% Hypercapnia/10% Hypoxia":{
+                "Cal 20 Room Air":["Cal 20 Room Air"],
+                "Cal 20 5% CO2":["Cal 20 5% CO2"],
+                "Cal 20 10% O2":["Cal 20 10% O2"],
+                "Room Air":["Room Air"],
+                "5% CO2":["5% CO2"],
+                "Room Air 2":["Room Air 2"],
+                "10% O2":["10% O2"],
+                "Room Air 3":["Room Air 3"]
+            },
             "10% Hypoxia":{
                 "Cal 20 Room Air":["Cal 20 Room Air"],
                 "Cal 20 10% O2":["Cal 20 10% O2"],
