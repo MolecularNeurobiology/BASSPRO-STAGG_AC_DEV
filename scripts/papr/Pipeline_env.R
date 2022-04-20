@@ -2,6 +2,7 @@
 # pipeline.r is the main wrapper of all the scripts for papr. Additionally, it 
 # provides the methods to parse the command line arguments.
 print("Setting pipeline")
+
 library(rjson)
 library(tidyverse)
 # library(dplyr)

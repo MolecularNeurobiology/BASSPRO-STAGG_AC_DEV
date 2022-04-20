@@ -13,6 +13,9 @@ Improvements:
     When leaving max display for the main window, the window changed size and exceeded main monitor screen
         After this happened the main window entered a strange minimized state that I was unable to recover from
 
+    Check time stamps makes program hang
+        Consider having a progress bar or a simple message indicating work is being done
+
 Questions:
     Does any data/configuration persist in the program for example the default directory
         or must a user select this anytime the program is run
