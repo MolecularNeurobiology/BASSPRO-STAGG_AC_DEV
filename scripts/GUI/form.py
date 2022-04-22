@@ -10,14 +10,24 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_Plethysmography(object):
+
+    def __init__(self):
+
+        self.selectedSignalFiles = []
+        self.selectedMetaFiles = []
+        self.selectedVarFiles = []
+        self.selectedBreathFiles = []
+        self.selectedSections = []
+
     def setupUi(self, Plethysmography):
+
         Plethysmography.setObjectName("Plethysmography")
         Plethysmography.resize(3840, 2160)
         Plethysmography.setMinimumSize(QtCore.QSize(1750, 1300))
         Plethysmography.setCursor(QtGui.QCursor(QtCore.Qt.SizeAllCursor))
         Plethysmography.setAcceptDrops(True)
+
         self.centralwidget = QtWidgets.QWidget(Plethysmography)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -82,10 +92,13 @@ class Ui_Plethysmography(object):
         self.verticalLayout.addWidget(self.necessary_timestamp_box)
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.verticalLayout_4.addLayout(self.horizontalLayout)
+
         self.signal_files_list = QtWidgets.QListWidget(self.centralwidget)
         self.signal_files_list.setAcceptDrops(True)
         self.signal_files_list.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         self.signal_files_list.setObjectName("signal_files_list")
+        self.signal_files_list.itemSelectionChanged.connect(self.onChangeSignal)
+
         self.verticalLayout_4.addWidget(self.signal_files_list)
         self.horizontalLayout_6.addLayout(self.verticalLayout_4)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
@@ -125,9 +138,12 @@ class Ui_Plethysmography(object):
         self.signal_segments.setFont(font)
         self.signal_segments.setObjectName("signal_segments")
         self.verticalLayout_7.addWidget(self.signal_segments)
+
         self.delete_sections = QtWidgets.QPushButton(self.centralwidget)
         self.delete_sections.setObjectName("delete_sections")
         self.verticalLayout_7.addWidget(self.delete_sections)
+        self.delete_sections.clicked.connect(self.deleteAll)
+
         spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_7.addItem(spacerItem6)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -167,14 +183,19 @@ class Ui_Plethysmography(object):
         self.horizontalLayout_4.addLayout(self.verticalLayout_8)
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
         self.verticalLayout_11.setObjectName("verticalLayout_11")
+
         self.metadata_list = QtWidgets.QListWidget(self.centralwidget)
         self.metadata_list.setAcceptDrops(True)
         self.metadata_list.setObjectName("metadata_list")
+        self.metadata_list.itemSelectionChanged.connect(self.onChangeMeta)
         self.verticalLayout_11.addWidget(self.metadata_list)
+
         self.sections_list = QtWidgets.QListWidget(self.centralwidget)
         self.sections_list.setAcceptDrops(True)
         self.sections_list.setObjectName("sections_list")
+        self.sections_list.itemSelectionChanged.connect(self.onChangeSelections)
         self.verticalLayout_11.addWidget(self.sections_list)
+
         self.verticalLayout_11.setStretch(0, 1)
         self.verticalLayout_11.setStretch(1, 3)
         self.horizontalLayout_4.addLayout(self.verticalLayout_11)
@@ -185,14 +206,19 @@ class Ui_Plethysmography(object):
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
+
         self.variable_list = QtWidgets.QListWidget(self.centralwidget)
         self.variable_list.setViewMode(QtWidgets.QListView.ListMode)
         self.variable_list.setObjectName("variable_list")
+        self.variable_list.itemSelectionChanged.connect(self.onChangeVar)
         self.verticalLayout_5.addWidget(self.variable_list)
+
         self.breath_list = QtWidgets.QListWidget(self.centralwidget)
         self.breath_list.setAcceptDrops(True)
         self.breath_list.setObjectName("breath_list")
+        self.breath_list.itemSelectionChanged.connect(self.onChangeBreath)
         self.verticalLayout_5.addWidget(self.breath_list)
+
         self.verticalLayout_5.setStretch(0, 2)
         self.verticalLayout_5.setStretch(1, 3)
         self.horizontalLayout_5.addLayout(self.verticalLayout_5)
@@ -355,7 +381,7 @@ class Ui_Plethysmography(object):
         self.variable_annotation_button.setText(_translate("Plethysmography", "Variable Annotation"))
         self.signal_segments.setText(_translate("Plethysmography", "Select BASSPRO\n"
 " settings files"))
-        self.delete_sections.setText(_translate("Plethysmography", "Delete"))
+        self.delete_sections.setText(_translate("Plethysmography", "Delete All Selected"))
         self.label_2.setText(_translate("Plethysmography", "Advanced Settings"))
         self.auto_button.setText(_translate("Plethysmography", "Automatic Selection"))
         self.manual_button.setText(_translate("Plethysmography", "Manual Selection"))
@@ -369,3 +395,76 @@ class Ui_Plethysmography(object):
         self.imageformat_group.setTitle(_translate("Plethysmography", "Image file format"))
         self.svg_radioButton.setText(_translate("Plethysmography", ".svg"))
         self.jpeg_radioButton.setText(_translate("Plethysmography", ".jpeg"))
+
+    '''
+    Triggered when there is a selection made in signal_files_list
+    Stores selected files in list
+    '''
+    def onChangeSignal(self):
+
+        self.selectedSignalFiles = self.signal_files_list.selectedItems()
+
+    '''
+    Triggered when there is a selection made in metadata_list
+    Stores selected files in list
+    '''
+    def onChangeMeta(self):
+
+        self.selectedMetaFiles = self.metadata_list.selectedItems()
+    '''
+    Triggered when there is a selection made in variable_list
+    Stores selected files in list
+    '''
+    def onChangeVar(self):
+
+        self.selectedVarFiles = self.variable_list.selectedItems()
+    '''
+    Triggered when there is a selection made in breath_list
+    Stores selected files in list
+    '''
+    def onChangeBreath(self):
+
+        self.selectedBreathFiles = self.breath_list.selectedItems()
+    '''
+    Triggered when there is a selection made in sections_list
+    Stores selected files in list
+    '''
+    def onChangeSelections(self):
+
+        self.selectedSections = self.sections_list.selectedItems()
+
+    '''
+    Removes all selected items from all lists
+    '''
+    def deleteAll(self):
+
+        if len(self.selectedSignalFiles) > 0:
+            for i in range(len(self.signal_files_list)):
+                if self.signal_files_list.item(i) in self.selectedSignalFiles:
+                    self.signal_files_list.takeItem(i)
+
+        if len(self.selectedMetaFiles) > 0:
+            for i in range(len(self.metadata_list)):
+                if self.metadata_list.item(i) in self.selectedMetaFiles:
+                    self.metadata_list.takeItem(i)
+
+        if len(self.selectedVarFiles) > 0:
+            for i in range(len(self.variable_list)):
+                if self.variable_list.item(i) in self.selectedVarFiles:
+                    self.variable_list.takeItem(i)
+
+        if len(self.selectedBreathFiles) > 0:
+            for i in range(len(self.breath_list)):
+                if self.breath_list.item(i) in self.selectedBreathFiles:
+                    self.breath_list.takeItem(i)
+
+        if len(self.selectedSections) > 0:
+            for i in range(len(self.sections_list)):
+                if self.sections_list.item(i) in self.selectedSections:
+                    self.sections_list.takeItem(i)
+
+        self.sections_list.clearSelection()
+        self.breath_list.clearSelection()
+        self.variable_list.clearSelection()
+        self.metadata_list.clearSelection()
+        self.signal_files_list.clearSelection()
