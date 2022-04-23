@@ -2298,7 +2298,10 @@ class Config(QWidget, Ui_Config):
             self.pleth.buttonDict_variable[item]["group"].addButton(self.pleth.buttonDict_variable[item]["Ignore"])
             
             # Populating the table widget with the row:
-            self.variable_table.setItem(row,0,self.pleth.buttonDict_variable[item]["orig"])
+            tmpItem = QtWidgets.QTableWidgetItem(self.pleth.buttonDict_variable[item]["orig"])
+            tmpItem.setFlags(tmpItem.flags() & ~QtCore.Qt.ItemFlag.ItemIsEditable)
+            self.variable_table.setItem(row,0,tmpItem)
+
             self.variable_table.setItem(row,1,self.pleth.buttonDict_variable[item]["Alias"])
 
             self.variable_table.setCellWidget(row,2,self.pleth.buttonDict_variable[item]["Independent"])

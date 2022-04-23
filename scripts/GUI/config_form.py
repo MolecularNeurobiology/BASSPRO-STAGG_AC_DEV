@@ -108,6 +108,7 @@ class Ui_Config(object):
         self.horizontalLayout_2.addItem(spacerItem13)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+
         self.variable_table = QtWidgets.QTableWidget(Config)
         self.variable_table.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.variable_table.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
@@ -132,6 +133,7 @@ class Ui_Config(object):
         self.variable_table.verticalHeader().setDefaultSectionSize(50)
         self.variable_table.verticalHeader().setSortIndicatorShown(False)
         self.verticalLayout_2.addWidget(self.variable_table)
+
         spacerItem14 = QtWidgets.QSpacerItem(166, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem14)
         self.verticalLayout_2.setStretch(0, 6)
