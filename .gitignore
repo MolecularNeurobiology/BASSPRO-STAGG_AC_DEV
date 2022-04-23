@@ -1,1 +1,3 @@
 **/.idea
+**/scripts/GUI/__pycache__
+*.autosave

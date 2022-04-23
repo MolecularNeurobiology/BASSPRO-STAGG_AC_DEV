@@ -770,7 +770,7 @@ class Basic(QWidget, Ui_Basic):
             print(traceback.format_exc())
     
         with open(f'{Path(__file__).parent}/breathcaller_config.json','w') as bconfig_file:
-            json.dump(self.pleth.bc_config,bconfig_file)
+            json.dump(self.pleth.bc_config,bconfig_file, indent=4, sort_keys=True)
         
         if self.pleth.basicap != "":
         # Clearing the sections panel of the mainGUI and adding to it to reflect changes:
@@ -3287,7 +3287,6 @@ class Plethysmography(QMainWindow, Ui_Plethysmography):
 
         # Populate GUI widgets with experimental condition choices:
         self.m.preset_menu.addItems([x for x in self.bc_config['Dictionaries']['Manual Settings']['default'].keys()])
-        self.a.auto_setting_combo.addItems([x for x in self.bc_config['Dictionaries']['Auto Settings']['default'].keys()])
         
 #endregion
 
