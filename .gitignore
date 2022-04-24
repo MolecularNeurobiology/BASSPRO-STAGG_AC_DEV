@@ -1,3 +1,5 @@
 **/.idea
+**/scripts/__pycache__
 **/scripts/GUI/__pycache__
 *.autosave
+scripts/GUI/ac_test.py
