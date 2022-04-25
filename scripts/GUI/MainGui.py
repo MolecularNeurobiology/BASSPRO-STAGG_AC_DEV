@@ -484,8 +484,9 @@ class Basic(QWidget, Ui_Basic):
             self.basic_df = pd.DataFrame.from_dict(self.basic_dict,orient='index').reset_index()
             self.basic_df.columns = ['Parameters','Settings']
             # Populate table of summary tab:
+
         self.populate_table(self.basic_df,self.view_tab)
-    
+
     def reference_event(self):
         """
         Respond to the signal emitted by the self.help_{setting} ToolButton clicked by the user by calling self.populate_reference(self.sender.objectName()) to populate the appropriate TextBrowser with the definition, description, and default value of corresponding setting.
@@ -541,6 +542,7 @@ class Basic(QWidget, Ui_Basic):
             for row in range(table.rowCount()):
                 table.setItem(row,col,QTableWidgetItem(str(frame.iloc[row,col])))
                 table.item(row,0).setFlags(Qt.ItemIsEditable)
+
         table.setHorizontalHeaderLabels(frame.columns)
         self.view_tab.cellChanged.connect(self.update_tabs)
         self.view_tab.resizeColumnsToContents()

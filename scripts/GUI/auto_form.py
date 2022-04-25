@@ -1008,15 +1008,19 @@ class Ui_Auto(object):
         self.horizontalLayout_37.setStretch(1, 7)
         self.horizontalLayout_37.setStretch(2, 1)
         self.autotabs.addTab(self.inc_tab, "")
+
         self.frame_tab = QtWidgets.QWidget()
         self.frame_tab.setObjectName("frame_tab")
-        self.view_tab = QtWidgets.QTableWidget(self.frame_tab)
-        self.view_tab.setGeometry(QtCore.QRect(0, 0, 2701, 1251))
+        self.horizontalLayout_frame_tab = QtWidgets.QHBoxLayout()
+        self.frame_tab.setLayout(self.horizontalLayout_frame_tab)
+        self.view_tab = QtWidgets.QTableWidget(0,0)
+        self.horizontalLayout_frame_tab.addWidget(self.view_tab)
         self.view_tab.setObjectName("view_tab")
         self.view_tab.setColumnCount(0)
         self.view_tab.setRowCount(0)
         self.autotabs.addTab(self.frame_tab, "")
         self.horizontalLayout_2.addWidget(self.autotabs)
+
         spacerItem172 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem172)
         self.horizontalLayout_2.setStretch(0, 1)
@@ -1097,14 +1101,23 @@ class Ui_Auto(object):
         self.help_auto_ind_gas_cal.setText(_translate("Auto", "?"))
         self.help_cal_co2.setText(_translate("Auto", "?"))
         self.help_cal_o2.setText(_translate("Auto", "?"))
-        self.auto_ind_cal_label.setText(_translate("Auto", "Volume \n"
-"Calibration"))
-        self.auto_ind_gas_cal_label.setText(_translate("Auto", "Gas \n"
-"Calibration"))
-        self.cal_co2_label.setText(_translate("Auto", "CO2 Calibration\n"
-" Parameters"))
-        self.cal_o2_label.setText(_translate("Auto", "O2 Calibration\n"
-" Parameters"))
+
+        self.auto_ind_cal_label.setText(_translate("Auto",
+                                                   "Volume \n"
+                                                   "Calibration"))
+
+        self.auto_ind_gas_cal_label.setText(_translate("Auto",
+                                                       "Gas \n"
+                                                       "Calibration"))
+
+        self.cal_co2_label.setText(_translate("Auto",
+                                              "CO2 Calibration\n"
+                                              " Parameters"))
+
+        self.cal_o2_label.setText(_translate("Auto",
+                                             "O2 Calibration\n"
+                                             " Parameters"))
+
         self.label_2.setText(_translate("Auto", "Reference"))
         self.autotabs.setTabText(self.autotabs.indexOf(self.cal_tab), _translate("Auto", "Section Calibration"))
         self.rig_convert_label_3.setText(_translate("Auto", "Gas Thresholds (V)"))
@@ -1143,22 +1156,34 @@ class Ui_Auto(object):
         self.help_include_apnea.setText(_translate("Auto", "?"))
         self.help_include_sigh.setText(_translate("Auto", "?"))
         self.help_include_high_chamber_temp.setText(_translate("Auto", "?"))
-        self.min_TT_label.setText(_translate("Auto", "Minimum breath \n"
-"cycle duration (s)"))
-        self.max_TT_label.setText(_translate("Auto", "Maximum breath \n"
-"cycle duration (s)"))
-        self.max_dvtv_label.setText(_translate("Auto", "Maximum DVTV (V)"))
+
+        self.min_TT_label.setText(_translate("Auto",
+                                             "Minimum breath \n"
+                                             "cycle duration (s)"))
+
+        self.max_TT_label.setText(_translate("Auto",
+                                             "Maximum breath \n"
+                                             "cycle duration (s)"))
+
+        self.max_dvtv_label.setText(_translate("Auto",
+                                               "Maximum DVTV (V)"))
+
         self.X_label.setText(_translate("Auto", "Frequency threshold"))
-        self.max_pX_label.setText(_translate("Auto", "Maximum percentage\n"
-" past threshold"))
-        self.vol_mov_avg_drift_label.setText(_translate("Auto", "Volume moving \n"
-"average range"))
+
+        self.max_pX_label.setText(_translate("Auto",
+                                             "Maximum percentage\n"
+                                             " past threshold"))
+
+        self.vol_mov_avg_drift_label.setText(_translate("Auto",
+                                                        "Volume moving \n"
+                                                        "average range"))
+
         self.min_tv_label.setText(_translate("Auto", "Minimum tidal volume"))
         self.min_bout_label.setText(_translate("Auto", "Minimum bout size"))
         self.label_8.setText(_translate("Auto", "Include apneas"))
         self.label_7.setText(_translate("Auto", "Include sighs"))
         self.label_6.setText(_translate("Auto", "Include high\n"
-" chamber temperatures"))
+                                        " chamber temperatures"))
         self.label_10.setText(_translate("Auto", "Reference"))
         self.autotabs.setTabText(self.autotabs.indexOf(self.inc_tab), _translate("Auto", "Inclusion Criteria"))
         self.autotabs.setTabText(self.autotabs.indexOf(self.frame_tab), _translate("Auto", "Criteria Summary"))
